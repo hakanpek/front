@@ -1,0 +1,27 @@
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './Providers/user.provider';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [UserService]  
+
+})
+export class AppComponent {
+  data: any = null;
+
+  constructor(public _userService: UserService){
+
+    this.getMyBlog();
+         }
+
+  private getMyBlog() {
+    return this. _userService.getPosts()
+                .map((res: Response) => res.json())
+                 .subscribe(data => {
+                        this.data = data;
+                        console.log(this.data);
+                 });
+              }
+            }
