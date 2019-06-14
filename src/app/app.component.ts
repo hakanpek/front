@@ -1,53 +1,35 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { UserService } from './Providers/user.provider';
-import { AvgStats } from './avgStats';
 
 
+import { Component } from '@angular/core';
+import { UserService } from './providers/user.provider';
 
-declare let $:any;
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [UserService]
+selector: 'app-root',
+templateUrl: './app.component.html',
+styleUrls: ['./app.component.css'],
+providers: [UserService]
+
 
 })
-export class AppComponent implements OnInit {
-  birthday = new Date(1988, 3, 15); // April 15, 1988
-  title = 'my application test';
-  username = '';
-  phonenumber;
-  listheadercolor = 'yellow';
-  searchname = '';
-  posts = [];
-  avgStats: AvgStats[];
-  count;
-  frtSla: number;
-
-
-
-   constructor(public _userService: UserService){
-
-     }
-     ngOnInit(){
-            this. _userService.getPosts()
-          .subscribe(res => {
-              this.avgStats = res;
-             this.frtSla = this.avgStats[0].Value;
-
-           }
-          )
+export class AppComponent {
+post;
+events=[];
+// search;
+// searchid;
+// events;
+// post:any = {};
+// username = '';
+// phonenumber;
+// listheadercolor = 'yellow';
+// users = [];
+// count;
+constructor(public _userService: UserService){}
+ngOnInit(){
+  this._userService.GetRsId(name)
+.subscribe(res => this.post = res);
+  this._userService.getGetId()
+  .subscribe(resPostData => this.post = resPostData);
+  
     }
-
   }
-
-
-//    constructor(public _userService: UserService){
-
-//   }
-//   ngOnInit(){
-//          this. _userService.getPosts()
-//        .subscribe(res => this.posts = res);
-
-//   }
-//   }

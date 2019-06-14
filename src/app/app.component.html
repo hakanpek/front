@@ -1,30 +1,19 @@
-<ul class="list-group">
-  <li class="list-group-item"></li>
-  <li class="list-group-item" *ngFor="let post of posts"> {{ post.name}}  </li>
-</ul>
-
-<p>hakan</p>
 
 
+<div> <input type="text" [(ngModel)]="UserName"> 
+  <input type="button" value="Gönder" (click)="GetRsId()">
+  </div>
 
 
-  <!-- <strong *ngIf="frtSla > 0 && frtSla/60 < 1">{{frtSla}} Minutes<br/></strong>
-  <strong *ngIf="frtSla > 0 && frtSla/60 >= 1">{{frtSla/60}} Hour(s)<br/></strong>
-  <strong *ngIf="frtSla > 0 && frtSla == 1440">{{ 1 }}  Day<br/></strong> -->
-
-   <p> {{ frtSla | minute }}  </p>
-
-   <p>The hero's birthday is {{ birthday | date }}</p>
-
-
-   <!-- <span>{{['a','b','z','c','d','e','f','g','j'] | sortBy: reverse}}</span>   <!-- alfabeye göre sıralar-->   rakam sıralar -->
-     <span>{{[2, 8, 3, 6, 34, 12, 35,40, 50 ,69,70] | sortBy: reverse}}</span>
+  
+  
 
 
 
-
-     <!-- if (typeof array[0] === "number") {
-      sortedArray = array.sort((a, b) => b - a);
-    }   bunu ekledin mi büyükten küçüğe sıralar   reverse ya da number olması birşey değiştirmez -->
-
-
+  <h3>1.apiden gelenler 'http://monitera.loggly.com/apiv2/search?q=token*'</h3>
+  <p> rsid: {{post.rsid.id}} </p>
+  <p> date_from: {{ post.rsid.date_from}} </p>
+  <h3>2.apiden gelenler 'http://monitera.loggly.com/apiv2/events?rsid='</h3>
+  <ul *ngFor="let e of post.events">
+  <li> id: {{ e.id }} timestamp: {{ e.timestamp }}</li>
+  </ul>
