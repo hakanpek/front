@@ -14,10 +14,7 @@ private _searchUrl: string = 'http://monitera.loggly.com/apiv2/search?q=*';
 private _url: string = 'http://monitera.loggly.com/apiv2/events?rsid=';
 
 
-
-
 constructor(private _http: Http){}
-
 
 GetRsId(name:string){
 const headers = new Headers();
