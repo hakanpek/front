@@ -1,19 +1,12 @@
 
-
-<div> <input type="text" [(ngModel)]="UserName"> 
-  <input type="button" value="Gönder" (click)="GetRsId()">
-  </div>
-
+{{username}}
+<div> <input type="text" [(ngModel)]="username" #refrence> <!-- input ilk disabled olur yazdığında normal olur -->
+<input type="button" [disabled]="username==''" value="Search" (click)="getUsers(username); refrence.value=''" >
+</div>
 
   
-  
+  <ul>
+<li *ngFor="let e of post.events">{{ e.id }} {{ e.timestamp }}  {{ e.logmsg}}</li>
 
-
-
-  <h3>1.apiden gelenler 'http://monitera.loggly.com/apiv2/search?q=token*'</h3>
-  <p> rsid: {{post.rsid.id}} </p>
-  <p> date_from: {{ post.rsid.date_from}} </p>
-  <h3>2.apiden gelenler 'http://monitera.loggly.com/apiv2/events?rsid='</h3>
-  <ul *ngFor="let e of post.events">
-  <li> id: {{ e.id }} timestamp: {{ e.timestamp }}</li>
-  </ul>
+</ul>
+ 
