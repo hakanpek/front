@@ -1,12 +1,34 @@
+Aranılan Kelime: {{ username }}
+<div> <input  type="text" [(ngModel)]="username" #refrence>
+<input type="button"  [disabled]="username==''" value="Search" (click)="getUsers(username);  refrence.value=''">
 
-{{username}}
-<div> <input type="text" [(ngModel)]="username" #refrence> <!-- input ilk disabled olur yazdığında normal olur -->
-<input type="button" [disabled]="username==''" value="Search" (click)="getUsers(username); refrence.value=''" >
+
+</div >
+<!-- input ilk disabled olur yazdığında normal olur -->
+ <!-- <h3>1.apiden gelenler  'http://monitera.loggly.com/apiv2/search?q=token*'</h3> -->
+ <p> rsid: {{post.rsid.id}} </p>
+ <p> date_from: {{ post.rsid.date_from}} </p>
+ <!-- <h3>2.apiden gelenler 'http://monitera.loggly.com/apiv2/events?rsid='</h3> -->
+
+
+ <div  *ngIf="post.events.length>0; else nousers">
+ <div class="loader" *ngIf="isLoading"></div>
+ <span class="load" *ngIf="isLoading">Loading...</span>
+  <ul *ngIf="!isLoading">
+ <li *ngFor="let post of post.events">
+   <span class="abc">total_events:</span> {{ abc }}
+  <span class="abc">username:</span> {{ post.event.json.Data.Data.username }}
+   <span class="abc">Step:</span> {{ post.event.json.Data.Step }}
+  <span class="abc">pubDate:</span> {{ post.event.json.Data.Data.pubDate }}
+  <span class="abc">domain:</span> {{ post.event.json.Data.Data.domain }}
+  <span class="abc">title:</span> {{ post.event.json.Data.Data.title }}
+
+
+</li>
+</ul>
 </div>
 
-  
-  <ul>
-<li *ngFor="let e of post.events">{{ e.id }} {{ e.timestamp }}  {{ e.logmsg}}</li>
 
-</ul>
- 
+<ng-template #nousers>
+   <p class="alert alert-danger text-center">{{ Message }}</p>
+</ng-template>
