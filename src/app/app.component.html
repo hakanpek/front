@@ -2,19 +2,22 @@
 <!-- 
 {{username}}
 <div> <input type="text" [(ngModel)]="username" #refrence> <!-- input ilk disabled olur yazdığında normal olur -->
-<input type="button" [disabled]="username==''" value="Search" (click)="getUsers(username); refrence.value=''" >
-</div>
+  Aranılan Kelime: {{ username }}
+  <div> <input  type="text" [(ngModel)]="username" #refrence>
+  <input type="button"  [disabled]="username==''" value="Search" (click)="getUsers(username);  refrence.value=''">
+
+
+
   
   <ul>
 <li *ngFor="let e of post.events">{{ e.id }} {{ e.timestamp }}  {{ e.logmsg}}</li>
 </ul>
-  -->
+  
 
 
 
-<div> <input type="text" [(ngModel)]="UserName" #refrence>
-  <input type="button" value="Gönder" (click)="GetRsId()">
-  </div>
+
+
 
 
   
